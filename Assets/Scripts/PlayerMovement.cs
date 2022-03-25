@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 
     float x, y;
     bool jumping, sprinting, crouching;
-    
+    bool crouchWalk;
 
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
@@ -50,19 +50,22 @@ public class PlayerMovement : MonoBehaviour {
     
     private void FixedUpdate() {
         Movement();
+        jumpCountReset();
+
     }
 
     private void Update() {
         MyInput();
         Look();
+
     }
 
    
     private void MyInput() {
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
-        jumping = Input.GetButton("Jump");
-        crouching = Input.GetKey(KeyCode.LeftControl);
+        jumping = Input.GetButtonDown("Jump");
+        //crouching = Input.GetKey(KeyCode.LeftControl);
       
         if (Input.GetKeyDown(KeyCode.LeftControl))
             StartCrouch();
@@ -74,15 +77,30 @@ public class PlayerMovement : MonoBehaviour {
         transform.localScale = crouchScale;
         transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         if (rb.velocity.magnitude > 0.5f) {
+            crouching=true;
             if (grounded) {
                 rb.AddForce(orientation.transform.forward * slideForce);
+                crouchWalk=false;
             }
+
+        }
+        else
+        {
+            crouchWalk=true;
+            maxSpeed=maxSpeed/2;
         }
     }
 
     private void StopCrouch() {
         transform.localScale = playerScale;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        if (crouchWalk==true)
+        {
+            maxSpeed=maxSpeed*2;
+            crouchWalk=false;
+        }
+        crouching=false;
+
     }
 
     private void Movement() {
@@ -114,16 +132,25 @@ public class PlayerMovement : MonoBehaviour {
             multiplierV = 0.5f;
         }
         
-        if (grounded && crouching) multiplierV = 0f;
+        //if (grounded && crouching) multiplierV = 0f;
 
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
         rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
     }
 
+    public int jumpCount;
+    private void jumpCountReset(){
+        if (grounded==true)
+        {
+            jumpCount=0;
+        }
+    }
     private void Jump() {
-        if (grounded && readyToJump) {
-            readyToJump = false;
+        
 
+        if (readyToJump&&grounded||readyToJump&&jumpCount<2) {
+            
+            
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
             rb.AddForce(normalVector * jumpForce * 0.5f);
             
@@ -133,8 +160,20 @@ public class PlayerMovement : MonoBehaviour {
             else if (rb.velocity.y > 0) 
                 rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
             
-            Invoke(nameof(ResetJump), jumpCooldown);
+            /*if (jumpCount<2)
+            {
+                grounded=true; 
+                jumpCount=jumpCount+1;
+
+            }
+            else if (jumpCount>2)*/
+            
+                Invoke(nameof(ResetJump), jumpCooldown);    
+                jumpCount++;
+            
+            
         }
+        
     }
     
     private void ResetJump() {
@@ -159,7 +198,7 @@ public class PlayerMovement : MonoBehaviour {
     private void CounterMovement(float x, float y, Vector2 mag) {
         if (!grounded || jumping) return;
 
-        if (crouching) {
+        if (crouching&&crouchWalk==false) {
             rb.AddForce(moveSpeed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
             return;
         }
@@ -171,7 +210,6 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
         
-        //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
         if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed) {
             float fallspeed = rb.velocity.y;
             Vector3 n = rb.velocity.normalized * maxSpeed;
@@ -224,7 +262,9 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void StopGrounded() {
+        
         grounded = false;
+        
     }
     
 }
