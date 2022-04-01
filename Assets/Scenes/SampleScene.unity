@@ -1051,7 +1051,7 @@ MonoBehaviour:
   maxSlopeAngle: 35
   slideForce: 400
   slideCounterMovement: 0.2
-  jumpForce: 150
+  jumpForce: 250
   jumpCount: 0
 --- !u!54 &1785130152
 Rigidbody:
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafc94b3e937ae449b2e2ae5f20e04ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: -6776437783544708399, guid: 1b19833606c4fa54688de0a5f6ebb658, type: 3}
+  projectile: {fileID: 6394188555871548383, guid: 3ebbccd08c8beaf46b05f747273f459d, type: 3}
   barrelend: {fileID: 135373701}
   firespeed: -2000
 --- !u!1 &2037185699
