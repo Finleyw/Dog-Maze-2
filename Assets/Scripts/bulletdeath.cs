@@ -10,7 +10,7 @@ public class bulletdeath : MonoBehaviour
        Destroy(gameObject,3.5f); 
     }
 
-    void OnTriggerEnter(Collider hitinfo)
+    void OnCollisionEnter(Collision hitinfo)
     {
         //Debug.Log(hitinfo.name);
         Destroy(gameObject);
