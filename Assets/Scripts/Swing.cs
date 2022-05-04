@@ -6,7 +6,7 @@ public class Swing : MonoBehaviour
 {
     private Animator anim;
   
-  int delay = 0;
+  //int delay = 0;
 
   void Start()
   {
@@ -17,20 +17,20 @@ public class Swing : MonoBehaviour
   void Update()
   {
     
-      if (delay>0)
+     /* if (delay>0)
       {
         delay--;
-      }
+      }*/
       if(Input.GetButtonDown("Fire1"))
       {
         
-        
-        fire();
+        anim.SetBool("Fire",true);
+        //fire();
         
         
         
       } 
-      if (delay==0)
+      else
       {
         anim.SetBool("Fire",false);
       } 
@@ -39,13 +39,13 @@ public class Swing : MonoBehaviour
         
 
   }
-  void fire()
+  /*void fire()
   {
     if(delay==0)
     {
       
-      anim.SetBool("Fire",true);
+      
       delay=21;
     }
-  }
+  }*/
 }

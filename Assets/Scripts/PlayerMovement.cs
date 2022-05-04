@@ -27,11 +27,11 @@ public class PlayerMovement : MonoBehaviour {
     public float slideCounterMovement = 0.2f;
 
     private bool readyToJump = true;
-    private float jumpCooldown = 0.25f;
+    //private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
 
     float x, y;
-    bool jumping, sprinting, crouching;
+    bool jumping, sprinting, crouching, doSlide;
     bool crouchWalk;
 
     private Vector3 normalVector = Vector3.up;
@@ -48,16 +48,29 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
+        CheckSlide();
         Movement();
-        jumpCountReset();
+        //jumpCountReset();
 
     }
 
-    private void Update() {
+    private void Update()
+    {
+
         MyInput();
+        SetJumpFlag();
         Look();
 
+    }
+
+    void SetJumpFlag()
+    {
+        if( grounded && jumping )
+        {
+            readyToJump=true;
+        }
     }
 
    
@@ -66,12 +79,23 @@ public class PlayerMovement : MonoBehaviour {
         y = Input.GetAxisRaw("Vertical");
         jumping = Input.GetButtonDown("Jump");
         sprinting = Input.GetKeyDown (KeyCode.LeftShift);
-        //crouching = Input.GetKey(KeyCode.LeftControl);
+        crouching = Input.GetKey(KeyCode.LeftControl);
       
         if (Input.GetKeyDown(KeyCode.LeftControl))
             StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl))
             StopCrouch();
+
+        if( x!=0 || y!= 0 )
+        {
+            doSlide=true;
+        }
+        else
+        {
+            doSlide=false;
+        }
+
+
     }
 
     private void StartCrouch() {
@@ -104,19 +128,23 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
-    private void Movement() {
+    private void Movement()
+    {
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
         
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
 
-        CounterMovement(x, y, mag);
+        //CounterMovement(x, y, mag);
         
-        if (readyToJump && jumping) Jump();
+        //if (readyToJump && jumping) 
+
+        Jump();
 
         float maxSpeed = this.maxSpeed;
         
-        if (crouching && grounded && readyToJump) {
+        if (crouching && grounded && readyToJump)
+        {
             rb.AddForce(Vector3.down * Time.deltaTime * 3000);
             return;
         }
@@ -146,20 +174,31 @@ public class PlayerMovement : MonoBehaviour {
             jumpCount=0;
         }
     }
-    private void Jump() {
+    private void Jump()
+    {
         
+        //if ((readyToJump&&grounded)||(readyToJump&&jumpCount<2)) {
 
-        if (readyToJump&&grounded||readyToJump&&jumpCount<2) {
+
+        if( readyToJump == true )
+        //if( (grounded == true) && (jumpCount<2) && (jumping==true))
+        {
+
+            readyToJump=false;
+
             
-            
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
-            
+            rb.AddForce(Vector3.up * jumpForce * 1.5f);
+            //rb.AddForce(normalVector * jumpForce * 0.5f);
+
+         /*   
             Vector3 vel = rb.velocity;
             if (rb.velocity.y < 0.5f)
                 rb.velocity = new Vector3(vel.x, 0, vel.z);
             else if (rb.velocity.y > 0) 
                 rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
+
+                */
+
             
             /*if (jumpCount<2)
             {
@@ -169,7 +208,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             else if (jumpCount>2)*/
             
-                Invoke(nameof(ResetJump), jumpCooldown);    
+                //Invoke(nameof(ResetJump), jumpCooldown);    
                 jumpCount++;
             
             
@@ -177,7 +216,28 @@ public class PlayerMovement : MonoBehaviour {
         
     }
     
-    private void ResetJump() {
+    void CheckSlide()
+    {
+
+        if( (crouching==false) && (doSlide==false) )
+        {
+            rb.velocity=new Vector3(0,rb.velocity.y,0);
+        }
+        /*print(RigidbodyConstraints);
+        if(Input.GetAxis("Horizontal")==0f&&Input.GetAxis("Vertical")==0f)
+        {
+            rb.constraintsa=RigidbodyConstraints.FreezePositionX;
+            rb.constraints=RigidbodyConstraints.FreezePositionZ;
+        }
+        else
+        {
+            //rb.constraints=RigidbodyConstraints.Position.None;
+            
+        }*/
+    }
+
+    private void ResetJump() 
+    {
         readyToJump = true;
     }
     
