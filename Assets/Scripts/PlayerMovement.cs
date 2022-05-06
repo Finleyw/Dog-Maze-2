@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpForce = 550f;
 
     float x, y;
-    bool jumping, sprinting, crouching, doSlide;
+    bool jumping, sprinting, crouching, doSlideY, doSlideX, doSlide;
     bool crouchWalk;
 
     private Vector3 normalVector = Vector3.up;
@@ -58,6 +58,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
+        print("do slide x"+doSlideX);
+        print("do slide y"+doSlideY);
 
         MyInput();
         SetJumpFlag();
@@ -86,14 +88,31 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.LeftControl))
             StopCrouch();
 
-        if( x!=0 || y!= 0 )
+        /*if( x!=0 || y!= 0 )
         {
             doSlide=true;
         }
         else
         {
             doSlide=false;
+        }*/
+        if(x!=0)
+        {
+            doSlideX=true;
         }
+        else
+        {
+            doSlideX=false;
+        }
+        if(y!=0)
+        {
+            doSlideY=true;
+        }
+        else
+        {
+            doSlideY=false;
+        }
+        
 
 
     }
@@ -219,10 +238,19 @@ public class PlayerMovement : MonoBehaviour {
     void CheckSlide()
     {
 
-        if( (crouching==false) && (doSlide==false) )
+        if( (crouching==false) && (doSlideY==false) )
+        {
+            rb.velocity=new Vector3(rb.velocity.x,rb.velocity.y,0);
+        }
+        if( (crouching==false) && (doSlideX==false) )
+        {
+            rb.velocity=new Vector3(0,rb.velocity.y,rb.velocity.z);
+        }
+        /*if( (crouching==false) && (doSlide==false) )
         {
             rb.velocity=new Vector3(0,rb.velocity.y,0);
         }
+
         /*print(RigidbodyConstraints);
         if(Input.GetAxis("Horizontal")==0f&&Input.GetAxis("Vertical")==0f)
         {
