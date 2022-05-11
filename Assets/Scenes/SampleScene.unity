@@ -1659,7 +1659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3480886345502042439, guid: cbdb617dac4ef2e429040081d288fa5e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3480886345502042439, guid: cbdb617dac4ef2e429040081d288fa5e, type: 3}
       propertyPath: m_LocalScale.z
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   wallrunForce: 3000
   maxWallrunTime: 2
   maxWallSpeed: 30
-  maxWallRunCameraTilt: 10
+  maxWallRunCameraTilt: 20
   wallRunCameraTilt: 0
   playerCam: {fileID: 963194228}
   orientation: {fileID: 1046222155}
