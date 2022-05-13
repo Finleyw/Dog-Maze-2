@@ -13,8 +13,6 @@ public class Enemy : MonoBehaviour
     public int MaxDist = 10;
     public int MinDist = 5;
     
-    float timer=0;
-    bool timerReached;
     private Animator anim;
  
  
@@ -53,35 +51,12 @@ public class Enemy : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        print(other.tag);
 
         if (other.CompareTag("Bullet"))
         {
             alive=false;
-            /*bool tempcheck= Timed(5);
-            if (tempcheck==true)
-            {
-                
-            }*/
-
         }
     }
-    bool Timed (float secs)
-    {
-        timerReached=false;
-        timer=0;
-        if (!timerReached)
-        timer += Time.deltaTime;
-
-        if (!timerReached && timer > secs)
-        {
-            Debug.Log("Done waiting");
-
-            //Set to false so that We don't run this again
-            timerReached = true;
-            
-        }
-        return timerReached;
-    }
+    
     
 }
