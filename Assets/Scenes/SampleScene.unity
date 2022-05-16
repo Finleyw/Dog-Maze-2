@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 183635755}
   m_Layer: 0
   m_Name: Cat Model
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1043,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body-0-New Piskel-1.png (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0e9fe315d276e45a04624f492c4353, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: de0e9fe315d276e45a04624f492c4353, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
@@ -1426,6 +1430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waist-0-New Piskel-1.png (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98a523d9b33e893448c68d3958ebd810, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 98a523d9b33e893448c68d3958ebd810, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
@@ -1547,6 +1555,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e7c60a205193f994e820414d0468430f, type: 3}
       propertyPath: m_Name
       value: ArmL
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7c60a205193f994e820414d0468430f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: e7c60a205193f994e820414d0468430f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1706,12 +1718,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Head-0-New Piskel-1.png (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bb7db47eb1e92584f86d2412fb35351a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: bb7db47eb1e92584f86d2412fb35351a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb7db47eb1e92584f86d2412fb35351a, type: 3}
+--- !u!1 &1274595941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274595942}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1274595942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274595941}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0, y: 0.5, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1757035901}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &1294224344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb7db47eb1e92584f86d2412fb35351a, type: 3}
@@ -1953,6 +1999,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a203cd610f19f9341943871173556f98, type: 3}
       propertyPath: m_Name
       value: Leg-0-New Piskel-1.png (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a203cd610f19f9341943871173556f98, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: a203cd610f19f9341943871173556f98, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2316,8 +2366,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3ebf29047ed0e864892a6488e3ac0f83, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3ebf29047ed0e864892a6488e3ac0f83, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ebf29047ed0e864892a6488e3ac0f83, type: 3}
+--- !u!4 &1757035901 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ebf29047ed0e864892a6488e3ac0f83, type: 3}
+  m_PrefabInstance: {fileID: 1757035900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1785130149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,7 +2394,6 @@ GameObject:
   - component: {fileID: 1785130154}
   - component: {fileID: 1785130153}
   - component: {fileID: 1785130152}
-  - component: {fileID: 1785130151}
   - component: {fileID: 1785130156}
   - component: {fileID: 1785130157}
   m_Layer: 0
@@ -2357,32 +2419,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1785130151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785130149}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc960bee94f376c4ab7984c4e9c3aa4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCam: {fileID: 316555261}
-  orientation: {fileID: 1046222155}
-  moveSpeed: 5000
-  maxSpeed: 20
-  grounded: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  counterMovement: 0.175
-  maxSlopeAngle: 35
-  slideForce: 400
-  slideCounterMovement: 0.2
-  jumpForce: 250
-  jumpCount: 0
 --- !u!54 &1785130152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2735,6 +2771,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmR
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7c60a205193f994e820414d0468430f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e7c60a205193f994e820414d0468430f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: e7c60a205193f994e820414d0468430f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
@@ -2869,6 +2913,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leg-0-New Piskel-1.png (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a203cd610f19f9341943871173556f98, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: a203cd610f19f9341943871173556f98, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
@@ -2960,7 +3008,7 @@ GameObject:
   - component: {fileID: 1952218288}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3041,10 +3089,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alive: 1
+  targetTime: 3
+  shootPoint: {fileID: 1274595942}
   Player: {fileID: 1785130150}
   MoveSpeed: 4
-  MaxDist: 10
-  MinDist: 3
+  MaxDist: 30
+  MinDist: 1
+  projectile: {fileID: 7362999760633576472, guid: 51719341a35476f4c8f6a844db79b35f, type: 3}
+  barrelend: {fileID: 1274595942}
+  firespeed: 3000
 --- !u!114 &1952218292
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class testMove2 : MonoBehaviour
     /// </summary>
 
     //Wallrunning
+    bool alive=true;
     public LayerMask whatIsWall;
     public float wallrunForce,maxWallrunTime, maxWallSpeed;
     bool isWallRight, isWallLeft;
@@ -160,11 +161,14 @@ public class testMove2 : MonoBehaviour
 
     private void Update()
     {
-        MyInput();
-        Look();
-        CheckForWall();
-        SonicSpeed();
-        WallRunInput();
+        if (alive==true)
+        {
+            MyInput();
+            Look();
+            CheckForWall();
+            SonicSpeed();
+            WallRunInput();
+        }
     }
 
     /// <summary>
@@ -621,6 +625,16 @@ public class testMove2 : MonoBehaviour
     /// <summary>
     /// Handle ground detection
     /// </summary>
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            print("ded");
+            alive=false;
+        }
+    }
+
     private void OnCollisionStay(Collision other)
     {
         //Make sure we are only checking for walkable layers

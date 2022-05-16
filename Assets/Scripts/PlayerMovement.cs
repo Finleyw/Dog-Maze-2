@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public Transform orientation;
     private Rigidbody rb;
 
+
     private float xRotation;
     private float sensitivity = 50f;
     private float sensMultiplier = 1f;
@@ -329,6 +330,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool cancellingGrounded;
     
     
+
     private void OnCollisionStay(Collision other) {
         int layer = other.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;

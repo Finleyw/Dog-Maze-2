@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,6 @@ public class bulletdeath : MonoBehaviour
 
     void OnCollisionEnter(Collision hitinfo)
     {
-        //Debug.Log(hitinfo.name);
         Destroy(gameObject);
     }
     
