@@ -29,24 +29,6 @@ public class WaterGun : MonoBehaviour
         {
             anim.SetBool("Shooting",false);
         }
-        /*if (delay>0)
-        {
-            delay--;
-        }
-        if(Input.GetButtonDown("Fire1"))
-        {
-            
-            
-            fire();
-            
-            
-            
-        } 
-        if (delay==0)
-        {
-            anim.SetBool("Fire",false);
-        } */
-
         ammoCount.text=ammo.ToString();
     }
     void Shooting()
