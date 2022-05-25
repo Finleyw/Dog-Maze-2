@@ -972,7 +972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3ebf29047ed0e864892a6488e3ac0f83, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 3ebf29047ed0e864892a6488e3ac0f83, type: 3}
       propertyPath: m_IsActive
@@ -1450,6 +1450,10 @@ PrefabInstance:
     - target: {fileID: 2837842986068703805, guid: f804524662ef03146a4ac3a9a6e7aeab, type: 3}
       propertyPath: m_Name
       value: Bottle Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837842986068703805, guid: f804524662ef03146a4ac3a9a6e7aeab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3182315978445103239, guid: f804524662ef03146a4ac3a9a6e7aeab, type: 3}
       propertyPath: m_RootOrder
@@ -2103,7 +2107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 84951729e6da1c04fa65dd79fa21ed2a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 84951729e6da1c04fa65dd79fa21ed2a, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2192,6 +2196,10 @@ PrefabInstance:
     - target: {fileID: 5989112142893583101, guid: 36f96132e6ebe4c49a5f8389ae8bacbb, type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989112142893583101, guid: 36f96132e6ebe4c49a5f8389ae8bacbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5989112143217333433, guid: 36f96132e6ebe4c49a5f8389ae8bacbb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3093,8 +3101,6 @@ MonoBehaviour:
   shootPoint: {fileID: 1274595942}
   Player: {fileID: 1785130150}
   MoveSpeed: 4
-  MaxDist: 30
-  MinDist: 1
   projectile: {fileID: 7362999760633576472, guid: 51719341a35476f4c8f6a844db79b35f, type: 3}
   barrelend: {fileID: 1274595942}
   firespeed: 3000
@@ -3256,7 +3262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2099102043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3517,6 +3523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 2837842986068703805, guid: f804524662ef03146a4ac3a9a6e7aeab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3182315978445103239, guid: f804524662ef03146a4ac3a9a6e7aeab, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3622,6 +3632,10 @@ PrefabInstance:
     - target: {fileID: 5989112142893583101, guid: 36f96132e6ebe4c49a5f8389ae8bacbb, type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989112142893583101, guid: 36f96132e6ebe4c49a5f8389ae8bacbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36f96132e6ebe4c49a5f8389ae8bacbb, type: 3}

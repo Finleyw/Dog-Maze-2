@@ -11,8 +11,7 @@ public class Enemy : MonoBehaviour
     public Transform shootPoint;
     public Transform Player;
     public int MoveSpeed = 4;
-    public int MaxDist = 10;
-    public int MinDist = 5;
+    
     
     private Animator anim;
  
@@ -45,19 +44,10 @@ public class Enemy : MonoBehaviour
         {
             transform.LookAt(Player);
 
-            if (Vector3.Distance(transform.position, Player.position) >= MinDist)
-            {
+            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
-                transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-
-
-
-                if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
-                {
-                    Shoot();
-                }
-
-            }
+            Shoot();
+           
         }
         if (alive== false)
         {
@@ -65,6 +55,20 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject,5f);
         }
     }
+
+    void Shoot()
+    {
+    
+        if(canShoot==true)
+        {
+            
+            Rigidbody projectileInstance;
+            projectileInstance= Instantiate(projectile, barrelend.position,barrelend.rotation) as Rigidbody;
+            projectileInstance.AddForce(barrelend.forward*firespeed);
+            targetTime=timer;
+        }
+    }
+    
     void OnTriggerEnter(Collider other)
     {
 
@@ -74,17 +78,6 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    void Shoot()
-    {
-        print("almost");
-        if(canShoot==true)
-        {
-            print("succwes");
-            Rigidbody projectileInstance;
-            projectileInstance= Instantiate(projectile, barrelend.position,barrelend.rotation) as Rigidbody;
-            projectileInstance.AddForce(barrelend.forward*firespeed);
-            targetTime=timer;
-        }
-    }
+   
     
 }

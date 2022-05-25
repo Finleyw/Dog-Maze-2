@@ -34,7 +34,7 @@ public class testMove2 : MonoBehaviour
         {
             rb.AddForce(orientation.forward * wallrunForce * Time.deltaTime);
 
-            //Make sure char sticks to wall
+            //Player sticks to wall
             if (isWallRight)
                 rb.AddForce(orientation.right * wallrunForce / 5 * Time.deltaTime);
             else
