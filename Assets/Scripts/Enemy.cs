@@ -12,13 +12,12 @@ public class Enemy : MonoBehaviour
     public Transform Player;
     public int MoveSpeed = 4;
     
-    
+    public winCondition winCon;
     private Animator anim;
  
     public Rigidbody projectile;
     public Transform barrelend;
     public float firespeed;
-    //int delay = 0;
     bool canShoot;
 
     void Start()
@@ -29,7 +28,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        print(canShoot);
         targetTime -= Time.deltaTime;
         if(targetTime<=0)
         {
@@ -51,8 +49,8 @@ public class Enemy : MonoBehaviour
         }
         if (alive== false)
         {
-            anim.SetTrigger("Dead");
-            Destroy(gameObject,5f);
+            
+            anim.SetBool("Dead",true);
         }
     }
 
@@ -75,9 +73,17 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             alive=false;
+
         }
     }
     
-   
+  
     
+    void Dead()
+    {
+        winCon.points++;
+
+        Destroy(gameObject);
+
+    }
 }

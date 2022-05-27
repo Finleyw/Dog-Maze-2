@@ -162,6 +162,10 @@ public class testMove2 : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKey("t"))
+        {
+            alive=false;
+        }
         if (alive==true)
         {
             MyInput();
