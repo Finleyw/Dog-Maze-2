@@ -69,7 +69,10 @@ public class Enemy : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-
+        if(other.CompareTag("Lava"))
+        {
+            Dead();
+        }
         if (other.CompareTag("Bullet"))
         {
             alive=false;

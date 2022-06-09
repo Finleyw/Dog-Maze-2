@@ -637,9 +637,13 @@ public class testMove2 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Lava"))
+        {
+            alive=false;
+        }
+
         if(other.CompareTag("Enemy"))
         {
-            print("ded");
             alive=false;
         }
     }
